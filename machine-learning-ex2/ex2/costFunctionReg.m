@@ -22,10 +22,10 @@ for i = 1:m
    J = J - y(i)*log(h)-(1-y(i))*log(1-h);
    grad = grad + (h - y(i))*X(i,:)';
 end
-J = J / m + lambda / (2*m) * sum(theta.*theta);
-grad = grad / m; temp1 = grad(1);
-grad = grad + lambda / m * theta;
-grad(1) = temp1;
+J = J / m + lambda / (2*m) * sum(theta(2:end).*theta(2:end));
+grad = grad / m;
+grad(2:end) = grad(2:end) + lambda / m * theta(2:end);
+
 
 % =============================================================
 
